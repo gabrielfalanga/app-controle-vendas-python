@@ -1,19 +1,15 @@
 from kivy.app import App
 from kivy.lang import Builder
-from kivy.uix.screenmanager import Screen
-
-
-class HomePage(Screen):
-    pass
-
-
-class AjustesPage(Screen):
-    pass
+from telas import *
+from botoes import *
 
 
 GUI = Builder.load_file('main.kv')
+
+
 class MainApp(App):
 
+    # retorna o GUI (interface visual definida em `main.kv`)
     def build(self):
         return GUI
 
