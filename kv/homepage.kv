@@ -6,14 +6,48 @@
                 pos: self.pos
                 source: 'icones/bg1.png'
 
-        LabelButton:
-            pos_hint: {'right': 1, 'top': 1}
-            size_hint: 1, 0.85
-            text: 'HomePage - Ir para Ajustes'
-            on_release: app.mudar_tela('ajustespage')
+        # texto com total de vendas do vendedor
+        Label:
+            canvas.before:
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: 'icones/botao_fino.png'
+            pos_hint: {'right': 0.85, 'top': 0.95}
+            size_hint: 0.7, 0.2
+            text: 'Total de Vendas: R$1'
+            id: label_total_vendas
+            # config para editar parte do texto
+            markup: True
 
-        Button:
-            pos_hint: {'right': 1, 'top': 0.15}
-            size_hint: 0.33, 0.15
-            text: 'Ir para Ajustes'
-            on_release: app.mudar_tela('ajustespage')
+        # lista scrollable com as vendas
+        ScrollView:
+            pos_hint: {'right': 1, 'top': 0.75}
+            size_hint: 1, 0.63
+
+        # rodapé
+        GridLayout:
+            rows: 1
+            pos_hint: {'right': 1, 'top': 0.12}
+            size_hint: 1, 0.12
+            canvas:
+                Color:
+                    rgb: utils.get_color_from_hex('#006D7E')
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+            # botão adicionar venda
+            ImageButton:
+                source: 'icones/add.png'
+                on_release: app.mudar_tela('adicionarvendaspage')
+
+            # botão listar vendedores
+            ImageButton:
+                source: 'icones/salesman.png'
+                on_release: app.mudar_tela('listarvendedorespage')
+
+            # botão ir para ajustes
+            ImageButton:
+                source: 'icones/settings.png'
+                on_release: app.mudar_tela('ajustespage')
